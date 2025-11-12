@@ -8,7 +8,6 @@
 <body>
   <h1>Atualizações em tempo real</h1>
   <p id="dados">Aguardando dados...</p>
-
   <script>
     const socket = io(); // Conecta automaticamente ao servidor Flask
 
@@ -18,6 +17,22 @@
       document.getElementById('dados').textContent =
         `${data.mensagem} (contador = ${data.contador})`;
     });
+  </script>
+  <script>
+    
+    // Envia via POST para o PHP
+    fetch("bank.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+    .then(res => res.text()) // ou res.json() se o PHP retornar JSON
+    .then(retorno => {
+      console.log("Resposta do PHP:", retorno);
+    })
+    .catch(erro => console.error("Erro:", erro));
   </script>
 </body>
 </html>

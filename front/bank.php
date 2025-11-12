@@ -21,7 +21,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 //id_morse int auto_increment primary key
 //morse varchar(255) not null
 //traducao varchar(255) not null 
+// <?php
+// // Lê os dados brutos do corpo da requisição
+// $input = file_get_contents("php://input");
 
+// // Converte de JSON para array associativo
+// $dados = json_decode($input, true);
+
+// // Agora você pode usar as variáveis normalmente
+// $nome = $dados["nome"];
+// $idade = $dados["idade"];
+
+// echo "Recebi nome: $nome e idade: $idade";
 
 mysqli_close($conexao);
 ?>
