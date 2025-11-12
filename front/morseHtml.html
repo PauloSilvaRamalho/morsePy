@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Flask-SocketIO Exemplo</title>
+  <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+</head>
+<body>
+  <h1>Atualizações em tempo real</h1>
+  <p id="dados">Aguardando dados...</p>
+
+  <script>
+    const socket = io(); // Conecta automaticamente ao servidor Flask
+
+    // Ouve eventos 'atualizacao' vindos do Python
+    socket.on('atualizacao', (data) => {
+      console.log("Recebido:", data);
+      document.getElementById('dados').textContent =
+        `${data.mensagem} (contador = ${data.contador})`;
+    });
+  </script>
+</body>
+</html>
